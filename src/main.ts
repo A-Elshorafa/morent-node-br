@@ -12,7 +12,7 @@ async function bootstrap() {
     .addTag('Cars')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
 
   await app.listen(process.env.PORT ?? 8080);
 }
