@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { CarReview } from './car-reviews.entity';
 
 @Entity('Cars')
 export class Car {
@@ -53,4 +54,7 @@ export class Car {
 
     @Column('int')
     LocationId: number;
+
+    @OneToMany(() => CarReview, (review) => review.Car)
+    Reviews: CarReview[];
 }
