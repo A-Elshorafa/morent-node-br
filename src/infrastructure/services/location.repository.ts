@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UpdateLocationDto } from "src/application/dtos/location/update-location.dto";
+import { CreateLocationDto } from "src/application/dtos/location/create-location.dto";
 import { Location } from "src/domain/entities/location.entity";
 import { ILocationRepository } from "src/domain/repositories/location.repository";
 import { Repository } from "typeorm";
@@ -12,7 +13,7 @@ export class LocationRepository implements ILocationRepository {
         private readonly repository: Repository<Location>,
     ) { }
 
-    async create(location: Location): Promise<Location> {
+    async create(location: CreateLocationDto): Promise<Location> {
         return this.repository.save(location);
     }
 

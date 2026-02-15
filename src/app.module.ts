@@ -13,13 +13,21 @@ import { CarRepository } from './infrastructure/services/car.repository';
 import { typeOrmConfig } from './infrastructure/config/typeorm.config';
 import { Car } from './domain/entities/car.entity';
 import { CarType } from './domain/entities/car-type.entity';
+import { Location } from './domain/entities/location.entity';
 import { CarTypeRepository } from './infrastructure/services/car-type.repository';
+import { LocationRepository } from './infrastructure/services/location.repository';
 import { CreateCarTypeUseCase } from './application/use-cases/car-type/create-car-type.use-case';
 import { CarTypeController } from './presentation/controllers/car-type.controller';
 import { GetCarTypesUseCase } from './application/use-cases/car-type/get-car-types.use-case';
 import { UpdateCarTypeUseCase } from './application/use-cases/car-type/update-car-type.use-case';
 import { DeleteCarTypeUseCase } from './application/use-cases/car-type/delete-car-type.use-case';
 import { GetCarTypeUseCase } from './application/use-cases/car-type/get-car-type.use-case';
+import { LocationController } from './presentation/controllers/location.controller';
+import { CreateLocationUseCase } from './application/use-cases/location/create-location.use-case';
+import { GetLocationsUseCase } from './application/use-cases/location/get-locations.use-case';
+import { UpdateLocationUseCase } from './application/use-cases/location/update-location.use-case';
+import { DeleteLocationUseCase } from './application/use-cases/location/delete-location.use-case';
+import { GetLocationUseCase } from './application/use-cases/location/get-location.use-case';
 
 @Module({
   imports: [
@@ -33,7 +41,7 @@ import { GetCarTypeUseCase } from './application/use-cases/car-type/get-car-type
     }),
     TypeOrmModule.forFeature([Car, CarType, Location]),
   ],
-  controllers: [AppController, CarController, CarTypeController],
+  controllers: [AppController, CarController, CarTypeController, LocationController],
   providers: [
     AppUseCase,
     CreateCarUseCase,
@@ -46,6 +54,11 @@ import { GetCarTypeUseCase } from './application/use-cases/car-type/get-car-type
     UpdateCarTypeUseCase,
     DeleteCarTypeUseCase,
     GetCarTypeUseCase,
+    CreateLocationUseCase,
+    GetLocationsUseCase,
+    UpdateLocationUseCase,
+    DeleteLocationUseCase,
+    GetLocationUseCase,
     {
       provide: 'ICarRepository',
       useClass: CarRepository,
@@ -53,6 +66,10 @@ import { GetCarTypeUseCase } from './application/use-cases/car-type/get-car-type
     {
       provide: 'ICarTypeRepository',
       useClass: CarTypeRepository,
+    },
+    {
+      provide: 'ILocationRepository',
+      useClass: LocationRepository,
     },
   ],
 })
