@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import type { ICarRepository } from '../../../domain/repositories/car.repository.interface';
-import { CreateCarDto } from '../../dtos/create-car.dto';
+import { CreateCarDto } from '../../dtos/car/create-car.dto';
 import { Car } from '../../../domain/entities/car.entity';
 
 @Injectable()

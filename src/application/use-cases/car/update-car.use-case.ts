@@ -1,6 +1,6 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import type { ICarRepository } from '../../../domain/repositories/car.repository.interface';
-import { UpdateCarDto } from '../../dtos/update-car.dto';
+import { UpdateCarDto } from '../../dtos/car/update-car.dto';
 import { Car } from '../../../domain/entities/car.entity';
 
 @Injectable()

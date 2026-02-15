@@ -12,6 +12,10 @@ import { DeleteCarUseCase } from './application/use-cases/car/delete-car.use-cas
 import { CarRepository } from './infrastructure/services/car.repository';
 import { typeOrmConfig } from './infrastructure/config/typeorm.config';
 import { Car } from './domain/entities/car.entity';
+import { CarType } from './domain/entities/car-type.entity';
+import { CarTypeRepository } from './infrastructure/services/car-type.repository';
+import { CreateCarTypeUseCase } from './application/use-cases/car-type/create-car-type.use-case';
+import { CarTypeController } from './presentation/controllers/car-type.controller';
 
 @Module({
   imports: [
@@ -23,9 +27,9 @@ import { Car } from './domain/entities/car.entity';
       inject: [ConfigService],
       useFactory: typeOrmConfig,
     }),
-    TypeOrmModule.forFeature([Car]),
+    TypeOrmModule.forFeature([Car, CarType]),
   ],
-  controllers: [AppController, CarController],
+  controllers: [AppController, CarController, CarTypeController],
   providers: [
     AppUseCase,
     CreateCarUseCase,
@@ -33,9 +37,14 @@ import { Car } from './domain/entities/car.entity';
     GetCarUseCase,
     UpdateCarUseCase,
     DeleteCarUseCase,
+    CreateCarTypeUseCase,
     {
       provide: 'ICarRepository',
       useClass: CarRepository,
+    },
+    {
+      provide: 'ICarTypeRepository',
+      useClass: CarTypeRepository,
     },
   ],
 })

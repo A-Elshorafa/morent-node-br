@@ -5,8 +5,8 @@ import { GetCarsUseCase } from '../../application/use-cases/car/get-cars.use-cas
 import { GetCarUseCase } from '../../application/use-cases/car/get-car.use-case';
 import { UpdateCarUseCase } from '../../application/use-cases/car/update-car.use-case';
 import { DeleteCarUseCase } from '../../application/use-cases/car/delete-car.use-case';
-import { CreateCarDto } from '../../application/dtos/create-car.dto';
-import { UpdateCarDto } from '../../application/dtos/update-car.dto';
+import { CreateCarDto } from '../../application/dtos/car/create-car.dto';
+import { UpdateCarDto } from '../../application/dtos/car/update-car.dto';
 import { Car } from '../../domain/entities/car.entity';
 
 @ApiTags('Cars')
