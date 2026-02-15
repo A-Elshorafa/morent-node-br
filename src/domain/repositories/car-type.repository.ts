@@ -7,5 +7,5 @@ export interface ICarTypeRepository {
     findAll(): Promise<CarType[]>;
     findOne(id: number): Promise<CarType | null>;
     update(id: number, carType: Partial<CarType>): Promise<CarType>;
-    delete(id: number): Promise<void>;
+    delete(id: number): Promise<boolean>;
 }

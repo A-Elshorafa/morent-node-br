@@ -16,6 +16,10 @@ import { CarType } from './domain/entities/car-type.entity';
 import { CarTypeRepository } from './infrastructure/services/car-type.repository';
 import { CreateCarTypeUseCase } from './application/use-cases/car-type/create-car-type.use-case';
 import { CarTypeController } from './presentation/controllers/car-type.controller';
+import { GetCarTypesUseCase } from './application/use-cases/car-type/get-car-types.use-case';
+import { UpdateCarTypeUseCase } from './application/use-cases/car-type/update-car-type.use-case';
+import { DeleteCarTypeUseCase } from './application/use-cases/car-type/delete-car-type.use-case';
+import { GetCarTypeUseCase } from './application/use-cases/car-type/get-car-type.use-case';
 
 @Module({
   imports: [
@@ -38,6 +42,10 @@ import { CarTypeController } from './presentation/controllers/car-type.controlle
     UpdateCarUseCase,
     DeleteCarUseCase,
     CreateCarTypeUseCase,
+    GetCarTypesUseCase,
+    UpdateCarTypeUseCase,
+    DeleteCarTypeUseCase,
+    GetCarTypeUseCase,
     {
       provide: 'ICarRepository',
       useClass: CarRepository,

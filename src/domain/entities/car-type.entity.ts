@@ -6,5 +6,5 @@ export class CarType {
   CarTypeId: number;
 
   @Column()
-  TypeName: string;
+  TypeName: String;
 }
