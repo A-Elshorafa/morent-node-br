@@ -4,6 +4,8 @@ import { Car } from '../../domain/entities/car.entity';
 import { CarType } from 'src/domain/entities/car-type.entity';
 import { Location } from 'src/domain/entities/location.entity';
 import { CarCompany } from 'src/domain/entities/car-company';
+import { CarReview } from 'src/domain/entities/car-reviews.entity';
+import { User } from 'src/domain/entities/user.entity';
 
 dotenv.config();
 
@@ -14,7 +16,7 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USERNAME || 'SA',
     password: process.env.DB_PASSWORD || 'MyStrongPass123',
     database: process.env.DB_NAME || 'morent_node',
-    entities: [Car, CarType, Location, CarCompany],
+    entities: [Car, CarType, Location, CarCompany, CarReview, User],
     migrations: [__dirname + '/../migrations/*.ts'],
     migrationsRun: true,
     migrationsTableName: '__migrations',
