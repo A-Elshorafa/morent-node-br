@@ -31,7 +31,7 @@ import { GetCarTypeUseCase } from './application/use-cases/car-type/get-car-type
       inject: [ConfigService],
       useFactory: typeOrmConfig,
     }),
-    TypeOrmModule.forFeature([Car, CarType]),
+    TypeOrmModule.forFeature([Car, CarType, Location]),
   ],
   controllers: [AppController, CarController, CarTypeController],
   providers: [
