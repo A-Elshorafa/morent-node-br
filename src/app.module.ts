@@ -36,6 +36,14 @@ import { UpdateCarCompanyUseCase } from './application/use-cases/car-company/upd
 import { DeleteCarCompanyUseCase } from './application/use-cases/car-company/delete-car-company.use-case';
 import { GetCarCompanyUseCase } from './application/use-cases/car-company/get-car-company.use-case';
 import { CreateCarCompanyUseCase } from './application/use-cases/car-company/create-car-company.use-case';
+import { UserRepository } from './infrastructure/services/user.repository';
+import { UpdateUserUseCase } from './application/use-cases/user/update-user.use-case';
+import { GetUserUseCase } from './application/use-cases/user/get-location.use-case';
+import { CreateUserUseCase } from './application/use-cases/user/create-user.use-case';
+import { GetUsersUseCase } from './application/use-cases/user/get-locations.use-case';
+import { DeleteUserUseCase } from './application/use-cases/user/delete-user.use-case';
+import { UserController } from './presentation/controllers/user.controller';
+import { User } from './domain/entities/user.entity';
 
 @Module({
   imports: [
@@ -47,9 +55,9 @@ import { CreateCarCompanyUseCase } from './application/use-cases/car-company/cre
       inject: [ConfigService],
       useFactory: typeOrmConfig,
     }),
-    TypeOrmModule.forFeature([Car, CarType, Location, CarCompany]),
+    TypeOrmModule.forFeature([Car, CarType, Location, CarCompany, User]),
   ],
-  controllers: [AppController, CarController, CarTypeController, LocationController, CarCompanyController],
+  controllers: [AppController, CarController, CarTypeController, LocationController, CarCompanyController, UserController],
   providers: [
     AppUseCase,
     CreateCarUseCase,
@@ -72,9 +80,18 @@ import { CreateCarCompanyUseCase } from './application/use-cases/car-company/cre
     UpdateCarCompanyUseCase,
     DeleteCarCompanyUseCase,
     GetCarCompanyUseCase,
+    CreateUserUseCase,
+    UpdateUserUseCase,
+    DeleteUserUseCase,
+    GetUserUseCase,
+    GetUsersUseCase,
     {
       provide: 'ICarRepository',
       useClass: CarRepository,
+    },
+    {
+      provide: 'IUserRepository',
+      useClass: UserRepository,
     },
     {
       provide: 'ICarTypeRepository',
